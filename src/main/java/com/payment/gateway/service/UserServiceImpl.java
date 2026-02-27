@@ -1,39 +1,48 @@
 package com.payment.gateway.service;
 
-import com.payment.gateway.dto.UserRequestDTO;
-import com.payment.gateway.dto.UserResponseDTO;
 import com.payment.gateway.model.User;
 import com.payment.gateway.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
     @Override
-    public UserResponseDTO createUser(UserRequestDTO request) {
+    public User createUser(User user) {
 
-        if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email already exists");
+        // Check if email already exists
+        userRepository.findByEmail(user.getEmail())
+                .ifPresent(existing -> {
+                    throw new RuntimeException("Email already registered: " + user.getEmail());
+                });
+
+        return userRepository.save(user);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+
+        if (!userRepository.existsById(id)) {
+            throw new RuntimeException("Cannot delete. User not found with id: " + id);
         }
 
-        User user = User.builder()
-                .fullName(request.getFullName())
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .build();
-
-        User saved = userRepository.save(user);
-
-        return UserResponseDTO.builder()
-                .id(saved.getId())
-                .fullName(saved.getFullName())
-                .email(saved.getEmail())
-                .build();
+        userRepository.deleteById(id);
     }
 }

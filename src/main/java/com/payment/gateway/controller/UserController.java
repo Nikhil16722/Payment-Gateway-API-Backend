@@ -1,24 +1,27 @@
 package com.payment.gateway.controller;
 
-import com.payment.gateway.dto.UserRequestDTO;
-import com.payment.gateway.dto.UserResponseDTO;
-import com.payment.gateway.service.UserService;
-import jakarta.validation.Valid;
+import com.payment.gateway.model.User;
+import com.payment.gateway.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
+@CrossOrigin
 public class UserController {
 
-    private final UserService userService;
+    private final UserRepository userRepository;
+
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 
     @PostMapping
-    public ResponseEntity<UserResponseDTO> createUser(
-            @Valid @RequestBody UserRequestDTO request) {
-
-        return ResponseEntity.ok(userService.createUser(request));
+    public User createUser(@RequestBody User user) {
+        return userRepository.save(user);
     }
 }

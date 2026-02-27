@@ -4,8 +4,8 @@
     <title>Payment Gateway API</title>
     <style>
         body {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
             font-family: Arial;
-            background: linear-gradient(to right, #141e30, #243b55);
             color: white;
             text-align: center;
             padding-top: 100px;
@@ -14,12 +14,12 @@
             background: rgba(255,255,255,0.1);
             padding: 40px;
             border-radius: 10px;
-            width: 500px;
-            margin: auto;
+            display: inline-block;
         }
-        h1 { margin-bottom: 20px; }
         a {
-            color: #00ffd5;
+            display: block;
+            margin: 15px;
+            color: #00ffcc;
             text-decoration: none;
             font-weight: bold;
         }
@@ -28,10 +28,11 @@
 <body>
 <div class="card">
     <h1>💳 Payment Gateway API Backend</h1>
-    <p>Secure RESTful API built with Spring Boot & PostgreSQL</p>
-    <p>Status: ✅ Running on Railway Cloud</p>
-    <br>
-    <a href="/swagger-ui.html">View API Documentation</a>
+    <p>Spring Boot + PostgreSQL + Railway Cloud</p>
+
+    <a href="/dashboard">View Database Dashboard</a>
+    <a href="/swagger-ui/index.html">View API Documentation</a>
+    <a href="/api/users">View Raw API JSON</a>
 </div>
 </body>
 </html>
