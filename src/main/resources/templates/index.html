@@ -1,38 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Payment Gateway API</title>
     <style>
         body {
-            background: linear-gradient(to right, #1e3c72, #2a5298);
-            font-family: Arial;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             color: white;
-            text-align: center;
-            padding-top: 100px;
         }
+
         .card {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             padding: 40px;
-            border-radius: 10px;
-            display: inline-block;
+            border-radius: 15px;
+            text-align: center;
+            width: 450px;
+            backdrop-filter: blur(10px);
         }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
         a {
             display: block;
-            margin: 15px;
-            color: #00ffcc;
+            margin: 10px 0;
             text-decoration: none;
+            color: #00ffcc;
             font-weight: bold;
+        }
+
+        a:hover {
+            color: white;
+        }
+
+        .status {
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
+
 <div class="card">
     <h1>💳 Payment Gateway API Backend</h1>
     <p>Spring Boot + PostgreSQL + Railway Cloud</p>
 
-    <a href="/dashboard">View Database Dashboard</a>
-    <a href="/swagger-ui/index.html">View API Documentation</a>
-    <a href="/api/users">View Raw API JSON</a>
+    <a href="/api/users">View Users API (DB Data)</a>
+    <a href="https://github.com/Nikhil16722/Payment-Gateway-API-Backend" target="_blank">
+        View GitHub Repository
+    </a>
+
+    <div class="status">
+        ✅ Connected to Database <br>
+        🚀 Deployed on Railway Cloud
+    </div>
 </div>
+
 </body>
 </html>
