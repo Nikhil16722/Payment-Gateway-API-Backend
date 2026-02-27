@@ -34,6 +34,7 @@ https://github.com/Nikhil16722/Payment-Gateway-API-Backend
 ---
 
 ## 📂 Project Architecture
+```text
 com.payment.gateway
 │
 ├── controller
@@ -61,7 +62,7 @@ com.payment.gateway
     ├── application.properties
     └── templates
         └── index.html
-
+```
 ### 🏗 Architecture Style
 
 This project follows a **Layered Architecture Pattern**:
