@@ -36,14 +36,47 @@ https://github.com/Nikhil16722/Payment-Gateway-API-Backend
 ## 📂 Project Architecture
 com.payment.gateway
 │
-├── controller → REST Controllers
-├── service → Business Logic Layer
-├── repository → JPA Repository Layer
-├── model → Entity Classes
-├── config → Security & App Config
+├── controller
+│   ├── UserController.java
+│   ├── PaymentController.java
+│   └── HomeController.java
+│
+├── service
+│   ├── UserService.java
+│   └── UserServiceImpl.java
+│
+├── repository
+│   ├── UserRepository.java
+│   └── PaymentRepository.java
+│
+├── model
+│   ├── User.java
+│   └── Payment.java
+│
+├── config
+│   ├── SecurityConfig.java
+│   └── DataLoader.java
+│
 └── resources
-└── templates → UI (Thymeleaf)
+    ├── application.properties
+    └── templates
+        └── index.html
 
+### 🏗 Architecture Style
+
+This project follows a **Layered Architecture Pattern**:
+
+- **Controller Layer** → Handles HTTP Requests (REST APIs)
+- **Service Layer** → Contains Business Logic
+- **Repository Layer** → Database interaction using Spring Data JPA
+- **Model Layer** → Entity classes mapped to PostgreSQL
+- **Config Layer** → Security & application configuration
+- **Presentation Layer** → Thymeleaf UI
+
+This structure ensures:
+- Clean separation of concerns
+- Scalable backend design
+- Enterprise-ready maintainability
 
 This follows proper **Layered Architecture** used in enterprise backend systems.
 
